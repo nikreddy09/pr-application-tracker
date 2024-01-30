@@ -23,7 +23,7 @@ class Applications extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5555/applications', {
+    axios.get('https://pr-app-tracker.onrender.com/applications', {
       headers: {
         'Authorization': localStorage.getItem('token')
       }

@@ -23,7 +23,7 @@ class Login extends React.Component {
       password: password.value
     };
     console.log(data);
-    axios.post('http://localhost:5555/api/auth', data).then((response) => {
+    axios.post('https://pr-app-tracker.onrender.com/api/auth', data).then((response) => {
       console.log(response);
       localStorage.setItem('token', response.data.token);
       window.location = '/';
