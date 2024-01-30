@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import { PORT, mongoDBURL } from "./config.js";
+import { PORT } from "./config.js";
 import applicationRoute from './routes/applicationRoutes.js'
 import userRoutes from './routes/users.js'
 import authRoutes from './routes/auth.js'
