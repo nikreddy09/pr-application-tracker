@@ -1,6 +1,6 @@
-import { Application } from "../models/applicationModel.js";
-import express from 'express';
-import { userVerification } from "../middlewares/AuthMiddleware.js";
+const Application = require('../models/applicationModel.js');
+const express = require('express');
+const userVerification = require('../middlewares/AuthMiddleware.js');
 const router = express.Router();
 
 // Route to save a new Applicant's Info
@@ -101,4 +101,4 @@ router.put('/:id', async (request, response) => {
     }
 });
 
-export default router;
+module.exports = router

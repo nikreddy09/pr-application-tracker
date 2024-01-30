@@ -1,7 +1,7 @@
-import express from 'express';
-import {User} from '../models/userModel.js'
-import Joi from 'joi';
-import bcrypt from 'bcrypt';
+const express = require('express');
+const {User} = require('../models/userModel.js');
+const joi = require('joi');
+const bcrypt = require('bcrypt');
 
 const router = express.Router();
 
@@ -39,4 +39,4 @@ const validate = (data) => {
     return schema.validate(data);
 }
 
-export default router;
+module.exports =  router;

@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-import jwt from 'jsonwebtoken';
-import Joi from 'joi';
-import passwordComplexity from 'joi-password-complexity';
+const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
+const joi = require('joi');
+const passwordComplexity = require('joi-password-complexity');
 
 const userSchema = mongoose.Schema({
     name: {
@@ -34,4 +34,4 @@ const validate = (data) => {
     return schema.validate(data);
 }
 
-export {User, validate}
+module.exports =  {User, validate}

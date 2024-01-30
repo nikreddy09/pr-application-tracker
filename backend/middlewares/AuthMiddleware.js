@@ -1,11 +1,10 @@
-// const User = require("../Models/UserModel");
-import {User} from '../models/userModel.js'
-import dotenv from 'dotenv';
-import jwt from 'jsonwebtoken';
+const {User} = require('../models/userModel.js');
+const dotenv = require('dotenv');
+const jwt = require('jsonwebtoken');
 
 dotenv.config();
 
-export const userVerification = (req, res, next) => {
+const userVerification = (req, res, next) => {
   console.log(req.headers)
   const token = req.headers.authorization
   console.log(token)
@@ -27,3 +26,5 @@ export const userVerification = (req, res, next) => {
     }
   })
 }
+
+module.exports = userVerification
