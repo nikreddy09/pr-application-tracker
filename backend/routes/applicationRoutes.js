@@ -4,36 +4,40 @@ const userVerification = require('../middlewares/AuthMiddleware.js');
 const router = express.Router();
 
 // Route to save a new Applicant's Info
-router.post('/', async (request, response) => {
+router.post('/', userVerification, async (request, response) => {
     try {
-        console.log(request.body)
+        console.log(response.locals.user)
         const {
-            applicantName,
             category,
             ita,
-            acknowledgment,
-            biometricsInvitation,
-            biometricsCompleted,
-            medicalsInvitation,
-            medicalsCompleted,
-            p1Email,
-            p2Email,
+            aor,
+            bil,
+            biometricsPassed,
+            mil,
+            medicalsPassed,
+            p1,
+            p2,
             copr
         } = request.body;
-        if (!applicantName || !category || !ita) {
+        if (!category || !ita) {
             return response.status(400).send('Please send applicant name and category details')
         }
+        const {
+            name,
+            _id
+        } = response.locals.user
         const newApplication = {
-            applicantName,
+            applicantName: name,
+            userId: _id,
             category,
             ita,
-            acknowledgment,
-            biometricsInvitation,
-            biometricsCompleted,
-            medicalsInvitation,
-            medicalsCompleted,
-            p1Email,
-            p2Email,
+            aor,
+            bil,
+            biometricsPassed,
+            mil,
+            medicalsPassed,
+            p1,
+            p2,
             copr
         }
         const application = await Application.create(newApplication);

@@ -7,7 +7,9 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-lone-blocks */
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter, Link, Route, Routes,
+} from 'react-router-dom';
 import { useState } from 'react';
 
 function logout() {
@@ -15,7 +17,7 @@ function logout() {
   window.location = '/login';
 }
 
-function NavBar({ homePage, applications }) {
+function NavBar({ homePage, applications, profile }) {
   const [displaySMUINav, setdisplaySMUINav] = useState(false);
   const classForNav = displaySMUINav ? 'w-full md:block md:w-auto' : 'hidden w-full md:block md:w-auto';
   const activeNav = 'block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500';
@@ -33,10 +35,13 @@ function NavBar({ homePage, applications }) {
         <div className={classForNav} id="navbar-default">
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
-              <a href="#" className={homePage ? activeNav : normalNav} aria-current="page">Home</a>
+              <Link to="/" className={homePage ? activeNav : normalNav}>Home</Link>
             </li>
             <li>
-              <a href="#" className={applications ? activeNav : normalNav}>Applications</a>
+              <Link to="/profile" className={profile ? activeNav : normalNav}>My Profile</Link>
+            </li>
+            <li>
+              <Link to="/applications" className={applications ? activeNav : normalNav}>Applications</Link>
             </li>
             <li>
               <button onClick={() => { localStorage.getItem('token') ? logout() : (window.location = '/login'); }} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{localStorage.getItem('token') ? 'Logout' : 'Login'}</button>

@@ -23,7 +23,7 @@ class Applications extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://pr-app-tracker.onrender.com/applications', {
+    axios.get(`${process.env.REACT_APP_PORT}/applications`, {
       headers: {
         'Authorization': localStorage.getItem('token')
       }
@@ -71,13 +71,13 @@ class Applications extends React.Component {
         <div className="flow-root">
           <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
             {this.listItem('ITA', data.ita)}
-            {this.listItem('AOR', data.acknowledgment)}
-            {this.listItem('BIL', data.biometricsInvitation)}
-            {this.listItem('MIL', data.medicalsInvitation)}
-            {this.listItem('Biometrics Passed', data.biometricsCompleted)}
-            {this.listItem('Medicals Passed', data.medicalsCompleted)}
-            {this.listItem('P1 Email', data.p1Email)}
-            {this.listItem('P2 Email', data.p2Email)}
+            {this.listItem('AOR', data.aor)}
+            {this.listItem('BIL', data.bil)}
+            {this.listItem('MIL', data.mil)}
+            {this.listItem('Biometrics Passed', data.biometricsPassed)}
+            {this.listItem('Medicals Passed', data.medicalsPassed)}
+            {this.listItem('P1 Email', data.p1)}
+            {this.listItem('P2 Email', data.p2)}
             {this.listItem('COPR', data.copr)}
           </ul>
         </div>

@@ -27,7 +27,7 @@ class SignUp extends React.Component {
       password: password.value,
     };
     console.log(data);
-    axios.post('https://pr-app-tracker.onrender.com/api/users', data).then((response) => {
+    axios.post(`${process.env.REACT_APP_PORT}/api/users`, data).then((response) => {
       console.log(response);
     }).catch((err) => {
       console.log(err);

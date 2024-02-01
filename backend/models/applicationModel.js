@@ -5,6 +5,10 @@ const applicationSchema = mongoose.Schema(
             type: String,
             required: true
         },
+        userId: {
+            type: mongoose.Schema.ObjectId,
+            required: true
+        },
         category: {
             type: String,
             required: true
@@ -13,26 +17,25 @@ const applicationSchema = mongoose.Schema(
             type: String,
             required: true
         },
-        acknowledgment: {
-            type: String
-            // required: true
-        },
-        biometricsInvitation: {
+        aor: {
             type: String
         },
-        biometricsCompleted: {
+        bil: {
             type: String
         },
-        medicalsInvitation: {
+        biometricsPassed: {
             type: String
         },
-        medicalsCompleted: {
+        mil: {
             type: String
         },
-        p1Email: {
+        medicalsPassed: {
             type: String
         },
-        p2Email: {
+        p1: {
+            type: String
+        },
+        p2: {
             type: String
         },
         copr: {

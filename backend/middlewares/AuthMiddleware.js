@@ -5,9 +5,7 @@ const jwt = require('jsonwebtoken');
 dotenv.config();
 
 const userVerification = (req, res, next) => {
-  console.log(req.headers)
   const token = req.headers.authorization
-  console.log(token)
   if (!token) {
     return res.json({ status: false })
   }
@@ -15,10 +13,9 @@ const userVerification = (req, res, next) => {
     if (err) {
      return res.json({ status: false })
     } else {
-    console.log(data)
       const user = await User.findById(data._id)
       if (user) {
-        console.log(user)
+        res.locals.user = user;
         // return res.json({ status: true, user: user.username })
         next()
       }
